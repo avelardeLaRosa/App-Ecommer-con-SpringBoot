@@ -40,4 +40,10 @@ public class ProductoServiceImpl implements ProductoService {
 		productoRepository.deleteById(id);
 	}
 
+	@Override
+	public List<Producto> findAll() {
+		// TODO Auto-generated method stub
+		return productoRepository.findAll();
+	}
+
 }

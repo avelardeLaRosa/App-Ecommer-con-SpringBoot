@@ -12,5 +12,6 @@ public interface ProductoService {
 	public Producto save(Producto p);
 	public void update(Producto p);
 	public void delete(int id);
+	public List<Producto>findAll();
 
 }
