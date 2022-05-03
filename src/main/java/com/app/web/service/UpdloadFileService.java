@@ -1,0 +1,38 @@
+package com.app.web.service;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+@Service
+public class UpdloadFileService {
+	
+	//tendra la ubicacion donde se cargaran las imagenes
+	private String folder="images//";
+	
+	public String saveImage(MultipartFile file) throws IOException {
+		if(!file.isEmpty()) {
+			//transformacion de img en bytes
+			byte [] bytes=file.getBytes();
+			//ruta
+			Path path= Paths.get(folder+file.getOriginalFilename());
+			Files.write(path, bytes);
+			return file.getOriginalFilename();
+		}
+		return "defualt.jpg";
+	}
+	
+	
+	public void deleteImage(String nombreImg) {
+		String ruta = "images//";
+		File file=new File(ruta+nombreImg);
+		file.delete();
+	}
+
+}
