@@ -1,9 +1,11 @@
 package com.app.web.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,23 +13,29 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "usuarios")
-public class Usuario {
+@Table(name = "tbl_usuario")
+public class Usuario implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nombre;
-	private String username;
+	private String apellido;
+
 	private String email;
 	private String direccion;
 	private String telefono;
 	private String tipo;
 	private String password;
 	
-	@OneToMany(mappedBy = "usuario")
+	@OneToMany(mappedBy = "usuario",fetch = FetchType.LAZY)
 	private List<Producto>productos;
 	// un usuario puede obtener los productos
-	@OneToMany(mappedBy = "usuario")
+	@OneToMany(mappedBy = "usuario",fetch = FetchType.LAZY)
 	private List<Orden>ordenes;
 	// un usuario puede obtener las ordenes
 	public Usuario() {
@@ -37,12 +45,13 @@ public class Usuario {
 	
 	
 	
-	public Usuario(Integer id, String nombre, String username, String email, String direccion, String telefono,
+	public Usuario(Integer id, String nombre,String apellido,  String email, String direccion, String telefono,
 			String tipo, String password) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
-		this.username = username;
+		this.apellido=apellido;
+
 		this.email = email;
 		this.direccion = direccion;
 		this.telefono = telefono;
@@ -65,12 +74,20 @@ public class Usuario {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public String getUsername() {
-		return username;
+	
+	public String getApellido() {
+		return apellido;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+
+
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
 	}
+
+
+
+
+	
 	public String getEmail() {
 		return email;
 	}
@@ -121,7 +138,7 @@ public class Usuario {
 
 	@Override
 	public String toString() {
-		return "Usuario [id=" + id + ", nombre=" + nombre + ", username=" + username + ", email=" + email
+		return "Usuario [id=" + id + ", nombre=" + nombre + ", email=" + email
 				+ ", direccion=" + direccion + ", telefono=" + telefono + ", tipo=" + tipo + ", password=" + password
 				+ "]";
 	}

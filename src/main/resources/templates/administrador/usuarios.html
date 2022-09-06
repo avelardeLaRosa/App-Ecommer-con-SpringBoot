@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="administrador/template_admin2.html::head">
+</head>
+
+<body class="sb-nav-fixed">
+
+  <!-- Navigation -->
+  <div th:include="administrador/template_admin2.html::cabecera"></div>
+
+<!-- Page Content -->
+<div class="contenedor">
+
+
+  <!-- Page Heading/Breadcrumbs -->
+  <h1 class="mt-4 mb-3">
+    Lista de Usuarios
+  </h1>
+
+  <a class="btn btn-primary" th:href="@{/usuario/registroAdmin}" > Agregar Nuevo Usuario</a>
+
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellido</th>
+        <th scope="col">Email</th>
+        <th scope="col">Telefono</th>
+        <th scope="col">Direccion</th>
+        <th scope="col">Rol</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="usuario:${usuarios}">
+        <td th:text="${usuario.nombre}"></td>
+        <td th:text="${usuario.apellido}"></td>
+        <td th:text="${usuario.email}"></td>
+        <td th:text="${usuario.telefono}"></td>
+        <td th:text="${usuario.direccion}"></td>
+        <td th:text="${usuario.tipo}"></td>
+         <td><a  class="btn btn-warning" th:href="@{/usuario/editar/{id} (id=${usuario.id})}" >Editar</a> </td>
+         <td><a  class="btn btn-danger" th:onclick="eliminarUsuario([[${usuario.id}]])" >Eliminar</a> </td>    
+         
+         <!--<td><a  class="btn btn-danger" th:href="@{/usuario/eliminar/{id} (id=${usuario.id})}" >Eliminar</a> </td> -->   
+        
+      </tr>       
+    </tbody>
+  </table>
+
+</div>
+<!-- /.container -->
+
+	<div th:include="administrador/template_admin2.html::contenido"></div>
+
+
+
+
+	<!-- Bootstrap core JavaScript -->
+	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+	<script	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script th:src="@{/js/alerta.js}"></script>
+    
+	<script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+	<script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+</body>
+
+</html>

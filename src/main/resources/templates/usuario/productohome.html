@@ -16,26 +16,23 @@
 
   <!-- Custom styles for this template -->
   <link th:href="@{/css/heroic-features.css}" rel="stylesheet">
-
+<link th:href="@{/css/estilos.css}" rel="stylesheet">
 </head>
 
-<body>
+<body >
 
-  <!-- Navigation -->
-  <div th:include="usuario/template_usuario.html::header"></div>
+  	<div th:include="usuario/template_usuario.html::headercarrito"> </div>
+
     <!-- Page Content -->
     <div class="container">
 
 
       <!-- Page Heading/Breadcrumbs -->
       <h1 class="mt-4 mb-3">
-        Spring eCommerce <small>Producto</small>
+        
       </h1>
 
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
-        <li class="breadcrumb-item active">Producto</li>
-      </ol>
+      
 
       <!-- Blog Post -->
       <div class="card mb-4">
@@ -75,8 +72,7 @@
     </div>
     <!-- /.container -->
 
-   <!-- Footer -->
-    <div th:include="usuario/template_usuario.html::footer"></div>
+  
 
     </footer>
 

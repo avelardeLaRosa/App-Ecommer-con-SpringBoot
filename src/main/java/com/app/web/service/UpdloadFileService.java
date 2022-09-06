@@ -20,17 +20,20 @@ public class UpdloadFileService {
 		if(!file.isEmpty()) {
 			//transformacion de img en bytes
 			byte [] bytes=file.getBytes();
-			//ruta
+			//ruta donde se almacenara la imagen ingresada
 			Path path= Paths.get(folder+file.getOriginalFilename());
+			//escribir en directorio (directorio y los bytes de la img)
 			Files.write(path, bytes);
 			return file.getOriginalFilename();
 		}
-		return "defualt.jpg";
+		
+		return "default.jpg";
 	}
 	
 	
 	public void deleteImage(String nombreImg) {
 		String ruta = "images//";
+		//ruta
 		File file=new File(ruta+nombreImg);
 		file.delete();
 	}

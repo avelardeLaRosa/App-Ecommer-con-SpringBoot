@@ -21,8 +21,7 @@
 
 <body>
 
-  <!-- Navigation -->
-  <div th:include="usuario/template_usuario.html::header"></div>
+  <div th:include="usuario/template_usuario.html::headercarrito"> </div>
 
     <!-- Page Content -->
     <div class="container">
@@ -30,14 +29,10 @@
 
       <!-- Page Heading/Breadcrumbs -->
       <h1 class="mt-4 mb-3">
-        Spring eCommerce <small>Carrito</small>
+        Tu carrito de compra
       </h1>
 
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
-        <li class="breadcrumb-item active">Carrito</li>
-      </ol>
-
+      
       <!-- Blog Post -->
       <div class="card mb-4">
         <div class="card-body">
@@ -45,7 +40,7 @@
            <div class="col-lg-9">
             <table class="table">
               <thead>
-                <tr>
+                <tr>          
                   <th scope="col">Producto</th>
                   <th scope="col">Precio</th>
                   <th scope="col">Cantidad</th>
@@ -55,11 +50,12 @@
               </thead>
               <tbody>
                 <tr th:each="dorden : ${cart}">
-                  <td th:text="${dorden.nombre}" ></td>
-                  <td th:text="${dorden.precio}" ></td>
-                  <td th:text="${dorden.cantidad}" ></td>
-                  <td th:text="${dorden.total}" ></td>
-                  <td><a th:href="@{/delete/cart/{id} (id=${dorden.producto.id})}" class="btn btn-danger">Quitar</a></td>
+                  <td th:text="${dorden.nombre}"></td>           
+                  <td th:text="${simbolo} + ${dorden.precio}"></td>
+                  <td th:text="${dorden.cantidad}"></td>
+                  <td th:text="${simbolo} + ${dorden.total}"></td>
+                  <td><a th:href="@{/delete/cart/{id} (id=${dorden.producto.id})}" class="btn btn-danger">Eliminar</a></td>
+               	
                 </tr>
               </tbody>
             </table>
@@ -69,8 +65,8 @@
             <h2 class="card-title">SUBTOTAL</h2>
 
             <ul class="list-group">
-              <li class="list-group-item"><h5 th:text="${orden.total}"></h5></li>
-              <a href="resumenorden.html" class="btn btn-dark">Ver Orden</a>
+              <li class="list-group-item"><h5 th:text="${simbolo} + ${orden.total}"></h5></li>
+              <a th:href="@{/order}" class="btn btn-dark">Ver Orden</a>
             </ul>
           </div>
 
@@ -80,8 +76,7 @@
     </div>
     <!-- /.container -->
 
-   <!-- Footer -->
-    <div th:include="usuario/template_usuario.html::footer"></div>
+   
 
   <!-- Bootstrap core JavaScript -->
     <script th:src="@{/vendor/jquery/jquery.min.js}"></script>

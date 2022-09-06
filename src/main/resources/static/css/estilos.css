@@ -1,0 +1,19 @@
+@charset "ISO-8859-1";
+
+.form-inline{
+	margin-left: 50px;
+}
+
+.items-cabeceras{
+	 display: flex;
+            justify-content: space-between;
+}
+
+.fondo-login{
+	background-image: url("https://images6.alphacoders.com/116/1161406.jpg");
+}
+
+.fondo-registro{
+	background-color: white;
+	padding: 5px;
+}

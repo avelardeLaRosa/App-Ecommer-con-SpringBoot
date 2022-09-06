@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+
+<head th:replace="administrador/template_admin2.html::head">
+</head>
+
+<body class="sb-nav-fixed">
+
+	<!-- Navigation -->
+	<div th:include="administrador/template_admin2.html::cabecera"></div>
+
+	<!-- Page Content -->
+	<div class="contenedor">
+
+
+
+		<!-- Page Heading/Breadcrumbs -->
+		<h1 class="mt-4 mb-3">Actualizar Usuario</h1>
+
+
+		<form class="form-horizontal" th:action="@{/administrador/actualizar}"
+			method="post" enctype="multipart/form-data">
+			<input type="hidden" name="id" th:value="${orden.id}">
+			
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="nombre">Cantidad:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="cantidad" name="cantidad"
+						placeholder="Ingrese su apellido" required autocomplete="off"
+						th:value="${orden.cantidad}">
+					<div id="prueba"></div>
+				</div>
+			</div>
+
+			
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="nombre">Producto:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="producto" name="producto"
+						placeholder="Ingrese su apellido" required autocomplete="off"
+						th:value="${orden.nombre}">
+					<div id="prueba"></div>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="direccion">Precio:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="precio" name="precio"
+						placeholder="Ingrese su direccion" required autocomplete="off"
+						th:value="${orden.precio}">
+					<div id="prueba"></div>
+				</div>
+			</div>
+
+
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="direccion">Total:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="total" name="total"
+						placeholder="Ingrese su direccion" required autocomplete="off"
+						th:value="${orden.total}">
+					<div id="prueba"></div>
+				</div>
+			</div>
+
+			
+			
+
+			<div class="row">
+				<div class="col-sm-2">
+					<button type="submit" class="btn btn-success">Actualizar</button>
+				</div>
+			</div>
+
+		</form>
+
+	</div>
+	<!-- /.container -->
+
+	<div th:include="administrador/template_admin2.html::contenido"></div>
+
+
+
+
+	<!-- Bootstrap core JavaScript -->
+	<script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+	<script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+</body>
+
+</html>
+

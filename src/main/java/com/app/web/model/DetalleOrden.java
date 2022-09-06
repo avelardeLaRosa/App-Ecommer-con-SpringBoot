@@ -1,5 +1,7 @@
 package com.app.web.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,26 +12,31 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "detalles")
-public class DetalleOrden {
+@Table(name = "tbl_detalle")
+public class DetalleOrden implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nombre;
-	private double cantidad;
+	private int cantidad;
 	private double precio;
 	private double total;
 	
 	@OneToOne
-	private Orden orden;
+	private Orden id_orden;
 	@ManyToOne
-	private Producto producto;
+	private Producto id_producto;
 	
 	public DetalleOrden() {
 		
 	}
 
-	public DetalleOrden(Integer id, String nombre, double cantidad, double precio, double total) {
+	public DetalleOrden(Integer id, String nombre, int cantidad, double precio, double total) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -54,11 +61,11 @@ public class DetalleOrden {
 		this.nombre = nombre;
 	}
 
-	public double getCantidad() {
+	public int getCantidad() {
 		return cantidad;
 	}
 
-	public void setCantidad(double cantidad) {
+	public void setCantidad(int cantidad) {
 		this.cantidad = cantidad;
 	}
 
@@ -80,20 +87,20 @@ public class DetalleOrden {
 	
 
 	public Orden getOrden() {
-		return orden;
+		return id_orden;
 	}
 
 	public void setOrden(Orden orden) {
-		this.orden = orden;
+		this.id_orden = orden;
 	}
 
 	
 	public Producto getProducto() {
-		return producto;
+		return id_producto;
 	}
 
 	public void setProducto(Producto producto) {
-		this.producto = producto;
+		this.id_producto = producto;
 	}
 
 	@Override

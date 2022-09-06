@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="administrador/template_admin2.html::head">
+
+</head>
+
+<body class="sb-nav-fixed">
+
+  <div th:include="administrador/template_admin2.html::cabecera"></div>
+
+
+
+
+	<!-- Page Content -->
+	<div class="contenedor">
+
+		<div class="card mb-3">
+			<div class="row no-gutters">
+				<div class="col-md-4"></div>
+				<div class="col-md-8">
+					<div class="card-body">
+						<h2>Registro</h2>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<form th:action="@{/usuario/guardar}" method="post">
+		
+			<div class="form-group">
+				<label for="nombres">Nombres:</label> <input type="text"
+					class="form-control" id="nombre" name="nombre" required
+					placeholder="Ingrese sus nombres" autocomplete="off">
+			</div>
+
+			<div class="form-group">
+				<label for="nombres">Apellido:</label> <input type="text"
+					class="form-control" id="apellido" name="apellido" required
+					placeholder="Ingrese sus nombres" autocomplete="off">
+			</div>
+
+			<div class="form-group">
+				<label for="direccion">Dirección:</label> <input type="text"
+					class="form-control" id="direccion" name="direccion" required
+					placeholder="Ingrese su dirección" autocomplete="off">
+			</div>
+			
+			<div class="form-group">
+				<label for="direccion">Telefono:</label> <input type="text"
+					class="form-control" id="telefono" name="telefono" required
+					placeholder="Ingrese su telefono" autocomplete="off">
+			</div>
+			
+			
+			<div class="form-group">
+				<label for="direccion">Email:</label> <input type="text"
+					class="form-control" id="email" name="email" required
+					placeholder="Ingrese su dirección email" autocomplete="off">
+			</div>
+
+			<div class="form-group">
+				<label for="pwd">Password</label> <input type="password"
+					class="form-control" id="password" name="password" required
+					placeholder="Ingrese su contraseña" autocomplete="off">
+			</div>
+			<div class="col-sm-2">
+				<button type="submit" class="btn btn-success">Guardar</button>
+			</div>
+		</form>
+
+	</div>
+
+	<!-- /.container -->
+
+
+
+	<!-- Bootstrap core JavaScript -->
+	<script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+	<script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+</body>
+
+</html>

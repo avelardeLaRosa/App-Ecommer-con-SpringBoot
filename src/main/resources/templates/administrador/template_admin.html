@@ -43,6 +43,7 @@
 					aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
+				
 				<div class="collapse navbar-collapse" id="navbarResponsive">
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item dropdown"><a
@@ -52,9 +53,15 @@
 							<div class="dropdown-menu"
 								aria-labelledby="navbarDropdownMenuLink">
 								<a class="dropdown-item" th:href="@{/productos}">Productos</a>
+								<a class="dropdown-item" th:href="@{/administrador/usuarios}">Usuarios</a>
+								<a class="dropdown-item" th:href="@{/administrador/ordenes}">Ordenes</a>
+								<a class="dropdown-item" th:href="@{/usuario/cerrar}">Cerrar Sesion</a>
+								
 							</div></li>
 					</ul>
 				</div>
+				
+				
 			</div>
 		</nav>
 

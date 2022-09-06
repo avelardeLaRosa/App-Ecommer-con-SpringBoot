@@ -3,6 +3,8 @@ package com.app.web.controller;
 import java.io.IOException;
 import java.util.Optional;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +20,7 @@ import com.app.web.model.Producto;
 import com.app.web.model.Usuario;
 import com.app.web.service.ProductoService;
 import com.app.web.service.UpdloadFileService;
+import com.app.web.service.UsuarioService;
 
 @Controller
 @RequestMapping("/productos")
@@ -29,6 +32,9 @@ public class ProductoController {
 	private ProductoService productoService;
 	@Autowired
 	private UpdloadFileService uploadService;
+	
+	@Autowired
+	private UsuarioService usuarioService;
 	
 	@GetMapping("")
 	public String show(Model model) {
@@ -44,14 +50,16 @@ public class ProductoController {
 	}
 	
 	@PostMapping("/save")
-	public String save(Producto producto,@RequestParam("img") MultipartFile file) throws IOException {
+	public String save(Producto producto,HttpSession session,@RequestParam("img") MultipartFile file) throws IOException {
+		
 		LOGGER.info("Este es el objeto producto {}", producto);
-		Usuario u=new Usuario(1,"","","","","","",""); //setea para la fk
-		producto.setUsuarios(u); //le da la data al fk
+		int id = Integer.parseInt(session.getAttribute("idusuario").toString());
+		Usuario u = usuarioService.findById(id).get();
+		producto.setUsuario(u); //le da la data al fk
 		
 		
 		//GUARDAR IMAGEN
-		if(producto.getId()==null) {
+		if(producto.getId()==null) {//siempre el id vendra en nulo
 			//cuando se crea un producto
 			String nombreImagen=uploadService.saveImage(file);
 			producto.setImagen(nombreImagen);
@@ -93,7 +101,7 @@ public class ProductoController {
 			String nombreImagen = uploadService.saveImage(file);
 			producto.setImagen(nombreImagen);
 		}
-		producto.setUsuarios(p.getUsuarios());
+		producto.setUsuario(p.getUsuario());
 		productoService.update(producto);
 		return "redirect:/productos";
 	}
